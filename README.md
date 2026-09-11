@@ -52,14 +52,14 @@
 |---|---|---|
 | 发生端产生 10 Hz–20 kHz 正弦 | `firmware/07_AD9850_DDS`、`09_optical_tx_B` | 可用 |
 | 峰峰值 1–3 V 可设、步长 0.1 V | `firmware/09_optical_tx_B` + `hardware/06_programmable_amp` | 可用 |
-| 可见光数字 + 模拟通信 | `firmware/experimental/09_error/optical_tx.c` | **协议已设计，未集成到发送端工程** |
+| 可见光数字 + 模拟通信 | `firmware/experimental/09_error/optical_tx.c` | 部分集成到发送端工程 |
 | 检测端显示幅频/相频曲线 | `firmware/02_LCD_2.4`（ILI9341，含 `LCD_Spectrum` 频谱绘图）| 显示驱动可用，测量链路未闭环 |
 | 检测端显示冲激响应曲线 | 同上 + `firmware/10_tim_adc_dma` | 采样链路可用，冲激响应未实现 |
 | 频率特性测量（FFT）| `firmware/10_tim_adc_dma`（TIM 触发 ADC+DMA+FFT）| 单点采频可用，扫频未闭环 |
 | 被测网络 RLC 测量 | `hardware/01_RLC_measurement` | 仿真验证完成，未接入固件 |
 | 参数设置交互（发生端）| `firmware/04_LCD_key_matrix`、`09_optical_tx_B` | 可用 |
 
-> **总体状态**：各**模块**基本打通，**系统级闭环尚未完成**。主要缺口是「扫频—测量—显示」的自动化流程，以及可见光通信链路在发送端的集成。
+> **总体状态**：各**模块**基本打通，**系统级闭环尚未完成**。主要缺口是「扫频—测量—显示」的自动化流程。
 
 ---
 
