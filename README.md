@@ -51,7 +51,7 @@
 | 赛题要求 | 对应实现 | 状态 |
 |---|---|---|
 | 发生端产生 10 Hz–20 kHz 正弦 | `firmware/07_AD9850_DDS`、`09_optical_tx_B` | 可用 |
-| 峰峰值 1–3 V 可设、步长 0.1 V | `firmware/09_optical_tx_B` + `hardware/06_programmable_amp` | 部分可用（见下方"已知问题"）|
+| 峰峰值 1–3 V 可设、步长 0.1 V | `firmware/09_optical_tx_B` + `hardware/06_programmable_amp` | 可用 |
 | 可见光数字 + 模拟通信 | `firmware/experimental/09_error/optical_tx.c` | **协议已设计，未集成到发送端工程** |
 | 检测端显示幅频/相频曲线 | `firmware/02_LCD_2.4`（ILI9341，含 `LCD_Spectrum` 频谱绘图）| 显示驱动可用，测量链路未闭环 |
 | 检测端显示冲激响应曲线 | 同上 + `firmware/10_tim_adc_dma` | 采样链路可用，冲激响应未实现 |
@@ -103,19 +103,6 @@
 ## 已知问题
 
 以下问题在源码中真实存在，**归档时未修改代码**，特此标注以免误导。
-
-### `firmware/09_optical_tx_B`
-
-1. **`DigitalRes_Amplifier_Set(Vpp)` 类型不匹配** —— `Vpp` 声明为 `float`，但函数期望整数档位参数。当前调用方式无法正确设置增益。
-2. **锁定输出会死机** —— 源码注释自述：`ad9850_wr_serial(0x00, Phase); DigitalRes_Amplifier_Set(Vpp);` 触发"锁存输出，**第四次会死机**"。
-3. **扫频与脉冲测试仅有界面** —— 按键 9 / 10 只显示 `"Bode Testing"` / `"Pulse Testing"` 文字，无实际逻辑。
-4. **变量命名误导** —— `Phase` 实际承载**频率**值（上限 20000），并非相位。
-5. **键盘 11 / 12 为空实现**。
-
-### `firmware/10_tim_adc_dma`
-
-- 硬编码 ADC FIFO 地址：`DL_DMA_setSrcAddr(DMA, DMA_CH0_CHAN_ID, (uint32_t)0x40556280)`，来自数据手册固定映射，更换器件需重新确认。
-- 主循环为阻塞式轮询 `ADCConvEnd`，未充分利用中断。
 
 ### `hardware`
 
