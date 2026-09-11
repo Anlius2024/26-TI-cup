@@ -1,0 +1,51 @@
+# ---------- CCS / TI build output ----------
+# The Debug/ tree holds object files, .out/.map artifacts and the SysConfig
+# generated sources (ti_msp_dl_config.c/.h).  Everything there is regenerated
+# by CCS on the first build, so it is intentionally not tracked.
+Debug/
+Release/
+CPU1_FLASH/
+CPU1_RAM/
+
+# ---------- clangd ----------
+# .clangd and the index cache are auto-generated ("do not add to source control")
+.clangd
+.cache/
+compile_commands.json
+
+# ---------- object / binary artifacts ----------
+*.o
+*.d
+*.obj
+*.out
+*.map
+*.opt
+*.axf
+*.pdb
+*.hex
+*.bin
+*.lst
+*.idx
+
+# ---------- editors / OS ----------
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+
+# ---------- Office temp / lock files ----------
+~$*
+
+# ---------- Multisim ----------
+# Multisim writes "(Security copy)" crash-protection duplicates
+*(Security copy)*
+
+# ---------- archives ----------
+*.rar
+*.7z
+
+# ---------- keep ----------
+!targetConfigs/
+!targetConfigs/**

@@ -1,0 +1,48 @@
+# Normalise line endings in the repository while leaving working trees alone.
+* text=auto
+
+# ---------- explicit text types ----------
+*.c      text diff=cpp
+*.h      text diff=cpp
+*.H      text diff=cpp
+*.cpp    text diff=cpp
+*.md     text
+*.txt    text
+*.syscfg text
+*.cmd    text
+*.json   text
+*.xml    text
+*.ccxml  text
+*.project     text
+*.cproject    text
+*.ccsproject  text
+*.prefs  text
+.gitignore    text
+.gitattributes text
+
+# ---------- binary types ----------
+# Multisim schematic (MSMCompressedEle, proprietary compressed)
+*.ms14   binary
+*.ms13   binary
+*.ms12   binary
+*.ms11   binary
+*.ms10   binary
+*.ewb    binary
+
+# documents / images / archives
+*.pdf    binary
+*.docx   binary
+*.doc    binary
+*.xlsx   binary
+*.xls    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.bmp    binary
+*.gif    binary
+*.zip    binary
+*.rar    binary
+*.7z     binary
+*.out    binary
+*.hex    binary
+*.bin    binary
